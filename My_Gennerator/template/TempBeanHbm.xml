@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="${beanPackage}.${className}" table="${tableName}" >
+#foreach($item in $!{columnDatas})
+     #if($item.columnKey == 'PRI')
+	<id name="$item.fieldName" type="$item.fieldDataTypeCompete">
+            <column name="$item.columnName" />
+            <generator class="identity" />
+        </id>
+		#else
+	<property name="$item.fieldName" type="$item.fieldDataTypeCompete">
+            <column name="$item.columnName"></column>
+        </property>
+	#end
+#end
+</class>
+</hibernate-mapping>

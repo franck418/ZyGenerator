@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- DAO -->
+	<bean id="${classNameForfield}DAO" class="${daoPackage}.${className}DAO">
+		<property name="sessionFactory" ref="masterSessionFactory" />
+	</bean>
+	
+	<!-- Service -->
+	<bean id="${classNameForfield}Service" class="${serviceImplPackage}.${className}ServiceImpl">
+		<property name="${classNameForfield}DAO" ref="${classNameForfield}DAO" />
+	</bean>
+  	
+</beans>
